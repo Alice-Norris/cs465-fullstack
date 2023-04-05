@@ -4,6 +4,7 @@ const hbs = require('hbs')
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+require('./app_api/models/db')
 
 // const aboutRouter = require('./app_server/routes/about');
 // const contactRouter = require('./app_server/routes/contact');
@@ -22,13 +23,15 @@ const routers = {
   '/news' : require('./app_server/routes/news') ,
   '/rooms' : require('./app_server/routes/rooms') ,
   '/travel' : require('./app_server/routes/travel') ,
+  '/users': require('./app_server/routes/users'),
+  '/api' : require('./app_api/routes/index')
 }
 const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 
-// register handlebars parrtials from the partials folder in views
+// register handlebars partials from the partials folder in views
 hbs.registerPartials(path.join(__dirname, 'app_server', 'views/partials'));
 
 app.set('view engine', 'hbs');
@@ -45,7 +48,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/about', aboutRouter);
 // app.use('/users', usersRouter);
 // app.use('/travel', travelRouter);
-
 for (var routerKey in routers) {
   app.use(routerKey, routers[routerKey])
 }

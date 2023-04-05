@@ -63,4 +63,4 @@ process.on('SIGTERM', () => {
 connect();
 
 //summon Mongoose schema
-require('../models/travlr');
+require('./travlr');
