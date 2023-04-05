@@ -6,10 +6,9 @@ const apiOptions = {
 }
 
 const renderTravelList = (req, res, responseBody) => {
-  let messsage = null;
+  let message = null;
   let pageTitle = process.env.npm_package_description + ' - Travel';
-
-  if (!(responseBody.length instanceof Array)) {
+  if (!(responseBody instanceof Array)) {
     message = 'API lookup error';
     responseBody = [];
   } else {
@@ -17,7 +16,8 @@ const renderTravelList = (req, res, responseBody) => {
       message = 'No trips exist in database!';
     }
   }
-
+  console.log("Res in renderTravelList: " + JSON.stringify(responseBody));
+  console.log("Title: " + pageTitle + "\nResponse Body:" + JSON.stringify(responseBody));
   res.render('travel', {
     title: pageTitle,
     trips: responseBody,
@@ -48,6 +48,7 @@ const travelList = (req, res) => {
 }
 
 module.exports = {
-  travelList
+  travelList,
+  renderTravelList
 };
 
