@@ -13,7 +13,7 @@ const connect = () => {
 }
 
 mongoose.connection.on('connected', () => { 
-  console.log(`Mongoose connected to %{dbURI}`);
+  console.log(`Mongoose connected to ${dbURI}`);
 });
 
 mongoose.connection.on('error', err => {
@@ -41,7 +41,6 @@ const gracefulShutdown = (msg, callback) => {
   });
 };
 
-
 process.once('SIGUSR2', () => {
   gracefulShutdown('nodemon restart', () => {
     process.kill(process.pid, 'SIGUSR2');
@@ -64,3 +63,5 @@ connect();
 
 //summon Mongoose schema
 require('./travlr');
+require('./meals');
+require('./blog');
