@@ -48,7 +48,7 @@ process.once('SIGUSR2', () => {
 });
 
 process.on('SIGINIT', () => {
-  gracefulShutdown('app termiunation', () => {
+  gracefulShutdown('app termination', () => {
     process.exitCode(0);
   });
 });
@@ -62,6 +62,7 @@ process.on('SIGTERM', () => {
 connect();
 
 //summon Mongoose schema
-require('./travlr');
-require('./meals');
-require('./blog');
+require('./models/travlr');
+require('./models/meals');
+require('./models/blog');
+require('./models/user');

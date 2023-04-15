@@ -10,6 +10,7 @@ import { TripDataService } from '../services/trip-data.service';
 })
 
 export class AddTripComponent implements OnInit {
+
   addForm: FormGroup;
   submitted = false;
 
@@ -20,6 +21,15 @@ export class AddTripComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    let tripCode = localStorage.getItem("tripCode");
+    if(!tripCode) {
+      alert("Something went wrong, couldn't find trip code!");
+      this.router.navigate(['']);
+      return;
+    }
+
+    console.log('AddTripComponen#onInit found tripCode ' + tripCode);
+
     this.addForm = this.formBuilder.group({
       id: [],
       code: ['', Validators.required],
@@ -31,8 +41,9 @@ export class AddTripComponent implements OnInit {
       image: ['', Validators.required],
       description: ['', Validators.required]
     })
+  console.log('EditTripComponent#onInit calling TripDataService#addTrip(\'' + tripCode + '\')');
   }
-
+  
   onSubmit() {
     this.submitted = true;
     if(this.addForm.valid){

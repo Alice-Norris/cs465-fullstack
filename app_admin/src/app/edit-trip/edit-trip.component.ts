@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TripDataService } from '../services/trip-data.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-edit-trip',
   templateUrl: './edit-trip.component.html',
   styleUrls: ['./edit-trip.component.css']
 })
+
 export class EditTripComponent implements OnInit {
 
   editForm: FormGroup;
@@ -16,10 +18,12 @@ export class EditTripComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private authService: AuthenticationService,
     private tripService: TripDataService
     ) { }
 
   ngOnInit() {
+    // retrieving stored tripCode
     let tripCode = localStorage.getItem("tripCode");
     if (!tripCode) {
       alert("Something went wrong, couldn't find the tripCode!");
@@ -27,7 +31,7 @@ export class EditTripComponent implements OnInit {
       return;
     }
     console.log('EditTripComponent#onInit found tripCode ' + tripCode);
-  
+
   this.editForm = this.formBuilder.group({
     _id: [],
     code: [tripCode, Validators.required],
@@ -60,4 +64,6 @@ export class EditTripComponent implements OnInit {
       });
     }
   }
+
+  get f() { return this.editForm.controls; }
 }

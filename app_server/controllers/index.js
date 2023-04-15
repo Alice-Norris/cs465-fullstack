@@ -4,9 +4,9 @@ const apiOptions = {
   server: 'http://localhost:3000'
 }
 
-const renderMealList = (req, res, responseBody) => {
+const renderBlogsList = (req, res, responseBody) => {
   let message = null;
-  let pageTitle = process.env.npm_package_description + ' - Meals';
+  console.log('Rendering...');
   if(!(responseBody instanceof Array)) {
     message = 'API lookup error';
     responseBody = [];
@@ -16,22 +16,22 @@ const renderMealList = (req, res, responseBody) => {
     }
   }
   console.log(JSON.stringify(responseBody));
-  res.render('meals', {
-    title: pageTitle,
-    meals: responseBody,
+  res.render('index', {
+    posts: responseBody,
     message
   });
 };
 
-const mealList = (req, res) => {
-  const path = '/api/meals';
+// parsing blog post data to be inserted into handlebars partial
+const blogsList = (req, res) => {
+  const path = '/api/blogs';
   const requestOptions = {
     url: `${apiOptions.server}${path}`,
     method: 'GET',
     json: {},
   };
 
-  console.info('>> mealsController.mealList calling ' + requestOptions.url);
+  console.info('>> blogsController.postList calling ' + requestOptions.url);
 
   request(
     requestOptions,
@@ -39,12 +39,12 @@ const mealList = (req, res) => {
       if (err) {
         console.error(err);
       }
-      renderMealList(req, res, body);
+      renderBlogsList(req, res, body);
     }
   )
 }
 
 module.exports = {
-  mealList,
-  renderMealList
+  blogsList,
+  renderBlogsList
 };
