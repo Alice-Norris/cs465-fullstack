@@ -9,13 +9,14 @@ const blogsController = require('../controllers/blogs')
 
 router
   .route('/trips')
-  .get(tripsController.tripsList)
-  .post(tripsController.tripsAddTrip); // all trips
+  .get(tripsController.tripsList) // READ all trips
+  .post(tripsController.tripsAddTrip); // CREATE one trip
 
 router
   .route('/trips/:tripCode')
-  .get(tripsController.tripsFindByCode)
-  .put(tripsController.tripsUpdateTrip) // trip by code
+  .get(tripsController.tripsFindByCode) // READ one trip
+  .put(tripsController.tripsUpdateTrip) // Update one trip
+  .delete(tripsController.tripsDeleteTrip); // DELETE one trip
 
 router.get('/meals', mealsController.mealsList) // all meals
 router.get('/blogs', blogsController.blogsList) // all blog posts

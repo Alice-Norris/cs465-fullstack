@@ -8,8 +8,10 @@ import { TripDataService } from '../services/trip-data.service';
   templateUrl: './edit-trip.component.html',
   styleUrls: ['./edit-trip.component.css']
 })
+
 export class EditTripComponent implements OnInit {
 
+  imgName: string;
   editForm: FormGroup;
   submitted = false;
 
@@ -20,14 +22,15 @@ export class EditTripComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    let tripCode = localStorage.getItem("tripCode");
+    const tripCode = localStorage.getItem("tripCode");
+
     if (!tripCode) {
       alert("Something went wrong, couldn't find the tripCode!");
       this.router.navigate(['']);
       return;
     }
     console.log('EditTripComponent#onInit found tripCode ' + tripCode);
-  
+
   this.editForm = this.formBuilder.group({
     _id: [],
     code: [tripCode, Validators.required],
@@ -46,6 +49,7 @@ export class EditTripComponent implements OnInit {
     .then(data => {
       console.log(data);
       this.editForm.patchValue(data[0]);
+      this.imgName=data[0]["image"];
     })
   }
 

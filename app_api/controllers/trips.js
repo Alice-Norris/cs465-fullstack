@@ -102,9 +102,37 @@ const tripsUpdateTrip = async (req, res) => {
     });
 }
 
+const tripsDeleteTrip = async(req, res) => {
+  console.log(req.body)
+  getUser(req, res,
+    (req, res) => {
+      Trip
+        .deleteOne({ 'code': req.params.tripCode })
+        .then(trip => {
+          if (!trip) {
+            return res
+              .status(404)
+              .send({message: "Trip not found with code " + req.params.tripCode});
+          }
+          res.send(trip);
+        }).catch(err => {
+          if (err.kind === 'ObjectId') {
+            return res
+              .status(404)
+              .send({message: "Trip not found with code " + req.params.tripCode});
+          }
+          return res
+            .status(500)
+            .json(err);
+        });
+    }
+  );
+}
+
 module.exports = {
-  tripsList,
-  tripsFindByCode,
-  tripsAddTrip,
-  tripsUpdateTrip
+  tripsAddTrip,    // CREATE one trip
+  tripsList,       // READ all trips
+  tripsFindByCode, // READ one trip
+  tripsUpdateTrip, // UPDATE one trip
+  tripsDeleteTrip  // DELETE one trip
 };
