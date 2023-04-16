@@ -15,7 +15,7 @@ router
 router
   .route('/trips/:tripCode')
   .get(tripsController.tripsFindByCode) // READ one trip
-  .put(tripsController.tripsUpdateTrip) // Update one trip
+  .put(tripsController.tripsUpdateTrip) // UPDATE one trip
   .delete(tripsController.tripsDeleteTrip); // DELETE one trip
 
 router.get('/meals', mealsController.mealsList) // all meals

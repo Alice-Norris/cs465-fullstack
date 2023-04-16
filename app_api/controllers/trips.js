@@ -45,6 +45,7 @@ const tripsFindByCode = async (req, res) => {
     });
 };
 
+// POST: /trips - adds a trip
 const tripsAddTrip = async (req, res) => {
   Trip
     .create({
@@ -70,6 +71,7 @@ const tripsAddTrip = async (req, res) => {
     });
 }
 
+// PUT: /trips/:tripCode - edits a trip
 const tripsUpdateTrip = async (req, res) => {
   console.log(req.body);
   Trip
@@ -102,6 +104,7 @@ const tripsUpdateTrip = async (req, res) => {
     });
 }
 
+// DELETE: /trips/tripCode - deletes a trip
 const tripsDeleteTrip = async(req, res) => {
   console.log(req.body)
   getUser(req, res,

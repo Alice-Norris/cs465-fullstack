@@ -14,20 +14,22 @@ const renderBlogsList = (req, res, responseBody) => {
     message = 'API lookup error';
     responseBody = [];
   } else {
-    // if 
+    // if response body does not have anything in it
     if(!responseBody.length) {
       message = 'No posts exist in database!';
     }
   }
   console.log(JSON.stringify(responseBody));
+  // render page using received blog list
   res.render('index', {
     posts: responseBody,
     message
   });
 };
 
-// parsing blog post data to be inserted into handlebars partial
+// requesting blog post data to be inserted into handlebars partial
 const blogsList = (req, res) => {
+  // setting path and options for http request
   const path = '/api/blogs';
   const requestOptions = {
     url: `${apiOptions.server}${path}`,
@@ -36,13 +38,15 @@ const blogsList = (req, res) => {
   };
 
   console.info('>> blogsController.postList calling ' + requestOptions.url);
-
+  //issue the request
   request(
     requestOptions,
     (err, { statusCode }, body) => {
+      // print error message if received
       if (err) {
         console.error(err);
       }
+      // render blog list using the appropriate function
       renderBlogsList(req, res, body);
     }
   )
