@@ -1,18 +1,22 @@
 const request = require('request')
 
+// configuring basic request options
 const apiOptions = {
   server: 'http://localhost:3000'
 }
 
+// renders blog list 
 const renderBlogsList = (req, res, responseBody) => {
   let message = null;
   console.log('Rendering...');
+  // if response is not an array (it hasn't responded, is it offline?)
   if(!(responseBody instanceof Array)) {
     message = 'API lookup error';
     responseBody = [];
   } else {
+    // if 
     if(!responseBody.length) {
-      message = 'No meals exist in database!';
+      message = 'No posts exist in database!';
     }
   }
   console.log(JSON.stringify(responseBody));
