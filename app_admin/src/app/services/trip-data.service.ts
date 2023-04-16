@@ -8,9 +8,11 @@ import { Trip } from '../models/trip';
 export class TripDataService {
   constructor(private http: Http) { }
 
+  // setting up url
   private apiBaseUrl = 'http://localhost:3000/api/';
   private tripUrl = `${this.apiBaseUrl}trips/`;
 
+  // adds one trip
   public addTrip(formData: Trip): Promise<Trip> {
     console.log('InsideTripDataService#addTrip');
     return this.http
@@ -20,6 +22,7 @@ export class TripDataService {
       .catch(this.handleError);
   }
 
+  // gets one trip
   public getTrip(tripCode: string): Promise<Trip> {
     console.log('Insiide TripDataService#getTrip(tripcode)');
     return this.http
@@ -29,6 +32,7 @@ export class TripDataService {
       .catch(this.handleError);
   }
 
+  // gets all trips
   public getTrips(): Promise<Trip[]> {
     console.log('Inside TripDataService#getTrips');
     return this.http
@@ -38,6 +42,7 @@ export class TripDataService {
       .catch(this.handleError);
   }
 
+  // edit one trip
   public updateTrip(formData: Trip): Promise<Trip> {
     console.log('Inside TripDataService#updateTrip');
     console.log(formData);
@@ -48,6 +53,7 @@ export class TripDataService {
       .catch(this.handleError)
   }
 
+  // delete one trip
   public deleteTrip(formData: Trip): Promise<Trip> {
     return this.http
       .delete(this.tripUrl + formData.code)
@@ -56,6 +62,7 @@ export class TripDataService {
       .catch(this.handleError);
   }
 
+  // handles errors for any of the above requests.
   private handleError(error: any): Promise<any> {
     console.error('Something has gone wrong: ', error);
     return Promise.reject(error.message || error);

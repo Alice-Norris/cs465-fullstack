@@ -18,13 +18,17 @@ export class TripCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // called when edit button is clicked
   private editTrip(trip: Trip): void {
+    //refresh trip code, redirect to edit-trip
     localStorage.removeItem("tripCode");
     localStorage.setItem("tripCode", trip.code);
     this.router.navigate(['edit-trip']);
   }
 
+  // called when delete button is clicked
   private deleteTrip(trip: Trip): void {
+    //refresh trip code, redirect to delete-trip
     localStorage.removeItem("tripCode");
     localStorage.setItem("tripCode", trip.code);
     this.router.navigate(['delete-trip']);

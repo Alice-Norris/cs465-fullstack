@@ -18,7 +18,7 @@ router
   .put(tripsController.tripsUpdateTrip) // UPDATE one trip
   .delete(tripsController.tripsDeleteTrip); // DELETE one trip
 
-router.get('/meals', mealsController.mealsList) // all meals
-router.get('/blogs', blogsController.blogsList) // all blog posts
+router.get('/meals', mealsController.mealsList) // READ all meals
+router.get('/blogs', blogsController.blogsList) // READ all blog posts
 
 module.exports = router;

@@ -11,9 +11,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 export class DeleteTripComponent implements OnInit {
 
+  // image name to allow preview of image of trip being deleted
   imgName: string;
+  // deletion formm
   deleteForm: FormGroup;
-  submitted = false;
+  // no need to track validation here, textboxes autofilled and disabled.
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,15 +24,18 @@ export class DeleteTripComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // get trip code
     const tripCode = localStorage.getItem("tripCode");
 
+    // handle missing trip code
     if (!tripCode) {
       alert("Something went wrong, couldn't find the tripCode!");
       this.router.navigate(['']);
       return;
     }
     console.log('DeleteTripComponent#onInit found tripCode ' + tripCode);
-
+    // represents the form in the HTML page for this component. Text inputs
+    // disabled, no validation needed
     this.deleteForm = this.formBuilder.group({
       _id: [],
       code: [{ value: tripCode, disabled: true}],
@@ -45,6 +50,7 @@ export class DeleteTripComponent implements OnInit {
 
     console.log('DeleteTripComponent#onInit calling TripDataService#getTrip(\'' + tripCode + '\')');
 
+    // get trip via trip service to autofill form/image
     const trip = this.tripService.getTrip(tripCode)
       .then(data => {
         console.log(data);
@@ -53,9 +59,9 @@ export class DeleteTripComponent implements OnInit {
       })
   }
 
+  // called when delete button is clicked.
   onSubmit() {
-    this.submitted = true;
-
+    // if form iis valid, delete trip
     this.tripService.deleteTrip(this.deleteForm.value)
     .then(data => {
       console.log(data);

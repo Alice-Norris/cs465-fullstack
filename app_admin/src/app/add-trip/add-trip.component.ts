@@ -10,7 +10,10 @@ import { TripDataService } from '../services/trip-data.service';
 })
 
 export class AddTripComponent implements OnInit {
+  // image name not necessary, no image to display yet
+  // addition form
   addForm: FormGroup;
+  // has the form been submitted? (Used for validation)
   submitted = false;
 
   constructor(
@@ -20,6 +23,7 @@ export class AddTripComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // represents the form in the HTML page for this component. Requires validation.
     this.addForm = this.formBuilder.group({
       id: [],
       code: ['', Validators.required],
@@ -35,6 +39,7 @@ export class AddTripComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    // if form is valide update trip, redirect to trip listing page
     if(this.addForm.valid){
       this.tripService
       .addTrip(this.addForm.value)

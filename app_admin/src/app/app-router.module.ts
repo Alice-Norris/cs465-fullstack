@@ -6,10 +6,10 @@ import { EditTripComponent } from './edit-trip/edit-trip.component';
 import { DeleteTripComponent } from './delete-trip/delete-trip.component';
 
 const routes: Routes = [
-  { path: 'add-trip', component: AddTripComponent },
-  { path: 'edit-trip', component: EditTripComponent },
-  { path: 'delete-trip', component: DeleteTripComponent },
-  { path: '', component: TripListingComponent, pathMatch: 'full' }
+  { path: 'add-trip', component: AddTripComponent }, // CREATE trip via POST
+  { path: 'edit-trip', component: EditTripComponent }, // UPDATE trip via PUT
+  { path: 'delete-trip', component: DeleteTripComponent }, // DELETE trip via DELETE
+  { path: '', component: TripListingComponent, pathMatch: 'full' } // READ trips via GET
 ]
 
 @NgModule({
