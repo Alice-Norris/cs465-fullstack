@@ -15,9 +15,11 @@
     <a class="navbar-item" routerLink="login" *ngIf="!isLoggedIn()">
       <span class="has-icon-left">Log In</span>
     </a>
-    <a class="navbar-item" (click)="onLogout()" *ngIf="isLoggedIn()">
-      <span>Hello,  </span>
-      <span class="has-icon-left ">Log Out</span>
-    </a>
+    <div *ngIf="isLoggedIn()">
+      <span>Hello, {{ userName }}</span><br/>
+      <a class="navbar-item link-primary" (click)="onLogout()" *ngIf="isLoggedIn()">
+        <span class="has-icon-left">Log Out</span>
+      </a>
+    </div>
   </div>
 </nav>

@@ -77,12 +77,12 @@ export class TripDataService {
       .then(response => response.json() as Trip)
       .catch(this.handleError);
   }
-  
+
   private handleError(error: any): Promise<any> {
     console.error('Something has gone wrong: ', error);
     return Promise.reject(error.message || error);
   }
-  
+
   public login(user: User): Promise<AuthResponse> {
     return this.makeAuthApiCall('login', user);
   }
@@ -92,7 +92,7 @@ export class TripDataService {
   }
 
   private makeAuthApiCall(urlPath: string, user: User): Promise<AuthResponse> {
-    const url: string = `${this.apiBaseUrl}/${urlPath}`;
+    const url: string = `${this.apiBaseUrl}${urlPath}`;
     return this.http
       .post(url, user)
       .toPromise()

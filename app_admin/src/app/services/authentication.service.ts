@@ -8,7 +8,7 @@ import { TripDataService } from "./trip-data.service";
   providedIn: 'root'
 })
 export class AuthenticationService {
-  
+
   constructor(
     @Inject(BROWSER_STORAGE) private storage: Storage,
     private tripDataService: TripDataService

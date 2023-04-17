@@ -16,11 +16,13 @@ const authController = require('../controllers/authentication');
 
 router
   .route('/login')
-  .post(authController.login);
+  // UNPROTECTED OPERATION
+  .post(authController.login); // login via authController
 
 router
   .route('/register')
-  .post(authController.register);
+  // UNPROTECTED OPERATION
+  .post(authController.register); // register via authController
 
 router
   .route('/trips')
@@ -38,10 +40,12 @@ router
   .delete(auth, tripsController.tripsDeleteTrip) // delete trip by code
 
 router
+  // UNPROTECTED OPERATION
   .route('/meals')
   .get(mealsController.mealsList) // all meals
 
 router
+  // UNPROTECTED OPERATION
   .route('/blogs')
   .get(blogsController.blogsList) // all blog posts
 

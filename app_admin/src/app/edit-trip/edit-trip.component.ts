@@ -12,7 +12,12 @@ import { AuthenticationService } from '../services/authentication.service';
 
 export class EditTripComponent implements OnInit {
 
+  imgPath: string = '..\\..\\assets\\images\\';
+  // image name to allow preview of image of the trip being edited
+  imgName: string = '';
+  // edit form
   editForm: FormGroup;
+  // has the form been submitted? (Used for validation)
   submitted = false;
 
   constructor(
@@ -24,7 +29,8 @@ export class EditTripComponent implements OnInit {
 
   ngOnInit() {
     // retrieving stored tripCode
-    let tripCode = localStorage.getItem("tripCode");
+    const tripCode = localStorage.getItem("tripCode");
+    console.log(this.imgName==='');
     if (!tripCode) {
       alert("Something went wrong, couldn't find the tripCode!");
       this.router.navigate(['']);
@@ -46,10 +52,11 @@ export class EditTripComponent implements OnInit {
 
   console.log('EditTripComponent#onInit calling TripDataService#getTrip(\'' + tripCode + '\')');
 
-  this.tripService.getTrip(tripCode)
+  const trip = this.tripService.getTrip(tripCode)
     .then(data => {
       console.log(data);
       this.editForm.patchValue(data[0]);
+      this.imgName=data[0]["image"];
     })
   }
 

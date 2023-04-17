@@ -10,13 +10,16 @@ import { Router } from '@angular/router';
 })
 
 export class NavbarComponent implements OnInit {
+  userName: string
 
   constructor(
     private authService: AuthenticationService,
     private router: Router,
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.userName = this.authService.getCurrentUser()['name']
+  }
 
   public isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
