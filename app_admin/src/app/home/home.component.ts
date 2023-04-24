@@ -22,9 +22,11 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // updating title with title service
     this.titleService.updateTitle(this.title.getTitle())
   }
 
+  // check for loggedin status
   public isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }
