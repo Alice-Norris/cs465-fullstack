@@ -16,6 +16,8 @@ const renderBlogsList = (req, res, responseBody) => {
     }
   }
   console.log(JSON.stringify(responseBody));
+
+  // setting controller up to use login modal and layout
   res.render('index', {
     title: 'Travlr Getaways',
     modal: 'loginModal',

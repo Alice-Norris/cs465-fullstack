@@ -4,6 +4,7 @@ const apiOptions = {
   server: 'http://localhost:3000'
 }
 
+// renders page with trip list once complete
 const renderTravelList = (req, res, responseBody) => {
   let message = null;
   let pageTitle = process.env.npm_package_description + ' - Travel';
@@ -17,6 +18,7 @@ const renderTravelList = (req, res, responseBody) => {
   }
   console.log("Res in renderTravelList: " + JSON.stringify(responseBody));
   console.log("Title: " + pageTitle + "\nResponse Body:" + JSON.stringify(responseBody));
+  // Setting up controller to use login modal and layout
   res.render('travel', {
     title: pageTitle,
     modal: 'loginModal',

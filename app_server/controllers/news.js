@@ -4,6 +4,7 @@ const apiOptions = {
   server: 'http://localhost:3000'
 }
 
+// setting up news to use modal and layout
 const news = (req, res) => {
   res.render('news', { 
     title: 'News',

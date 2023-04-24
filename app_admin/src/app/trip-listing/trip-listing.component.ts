@@ -17,8 +17,7 @@ import { Trip } from '../models/trip';
 
 export class TripListingComponent implements OnInit {
 
-  //trips: Array<any> = trips;
-  trips: Trip[];
+  trips: Trip[]; // list of trips
   viewModes: Array<string> = ['list', 'card'];
   mode: string = this.viewModes[0]
   message: string;

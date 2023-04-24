@@ -32,8 +32,8 @@ app.set('layouts', path.join(__dirname, 'app_server', 'views', 'layouts'))
 // register handlebars partials from the partials folder in views
 hbs.registerPartials(path.join(__dirname, 'app_server', 'views/partials'));
 
+// 'hbs' is handlebars
 app.set('view engine', 'hbs');
-
 
 // setting logger and express up
 app.use(logger('dev'));
@@ -45,7 +45,6 @@ app.use(passport.initialize());
 
 // allow CORS
 app.use('/api', (req, res, next) => {
-  console.log(next)
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');

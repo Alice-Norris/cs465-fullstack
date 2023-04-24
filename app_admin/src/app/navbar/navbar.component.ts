@@ -29,13 +29,13 @@ export class NavbarComponent implements OnInit {
   }
 
   async ngOnInit() {
+    // subscribing to title changes
     this.titleSub = this.titleService.currentTitle$.subscribe(
       title => {
         this.title = title;
-        console.log(this.title);
       }
     )
-
+    // retrieving user's name
     this.userName = await this.authService.getCurrentUser()['name'];
   }
 

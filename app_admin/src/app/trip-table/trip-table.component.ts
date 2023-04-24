@@ -10,18 +10,26 @@ import { TitleService } from '../services/title.service';
   templateUrl: './trip-table.component.html',
   styleUrls: ['./trip-table.component.css']
 })
+
 export class TripTableComponent implements OnInit {
+  // holds code of last selected trip row
   lastSelection: string = '';
+
+  // timezone and localization for parsing dates
   timezone: string = '';
   locale: string = '';
+
+  // previous title for navigation links
   prevTitle: string = '';
+
+  // receive list of trips as input
   @Input('trips') trips: Trip[];
 
   constructor(
     private router: Router,
     private location: Location,
-    private authService: AuthenticationService,
-    private titleService: TitleService
+    private authService: AuthenticationService, // login/register/authenticate
+    private titleService: TitleService // updates/notifies of titles and title changes
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +45,7 @@ export class TripTableComponent implements OnInit {
     this.router.navigate(['edit-trip']);
   }
 
+  // navigates to previous page
   prevNav(): void {
     this.location.back();
   }

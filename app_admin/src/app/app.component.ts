@@ -33,7 +33,6 @@ export class AppComponent implements OnInit{
   }
 
   public getTitle(): string {
-    console.log(this.title.getTitle());
     return this.title.getTitle();
   }
 }
