@@ -1,3 +1,57 @@
+/* Disabling bootstrap border-box */
+* {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+/* Login Modal dialog*/
+.modal-body {
+	padding: 0;
+}
+.login-modal-header {
+	border-bottom: none;
+}
+.login-modal-footer {
+	border-top: none;
+}
+form > div > label {
+	width: 30%;
+	text-align: right;
+}
+form > div > input {
+	width: 50%;
+}
+form > div > label[for='tos-check'] {
+	text-align: left;
+	width: auto;
+}
+.modal-content {
+	background: #e2c492
+}
+#login-modal form > div  {
+	padding: 1%;
+}
+.register-modal-label {
+	color:#316e66;
+}
+.login-modal-label {
+	color:#316e66;
+}
+#login-modal form > div > label {
+	padding-right: 2%;
+	font: "Times New Roman";
+	color:#316e66;
+}
+.tos-check-label{
+	text-align: left;
+}
 /* Website template by freewebsitetemplates.com */
 body {
 	background: #ffb744 url(../images/bg-body.jpg) repeat left bottom;
@@ -33,12 +87,7 @@ img {
 	margin-bottom: 20px;
 	padding-top: 20px;
 }
-/** Logo **/
-#logo {
-	float: left;
-	margin-bottom: 20px;
-	margin-left: 49px;
-}
+
 /** Navigation **/
 #navigation {
 	background: url(../images/bg-navigation.png) no-repeat;
@@ -47,6 +96,12 @@ img {
 	width: 860px;
 	margin: 0 auto;
 	padding: 1px;
+}
+
+#header img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit:scale-down
 }
 #navigation ul {
 	display: inline-block;
@@ -327,6 +382,7 @@ hr {
 	display: block;
 }
 /** Dive Site **/
+
 #sites li {
 	padding-bottom: 0;
 }
@@ -335,6 +391,7 @@ hr {
 	border: 1px solid #2c9688;
 	margin-left: 15px;
 }
+
 /** News **/
 #news {
 	display: inline-block;
@@ -454,6 +511,7 @@ hr {
 	display: block;
 	text-transform: uppercase;
 }
+
 /*------------------------------ FOOTER ------------------------------*/
 #footer {
 	color: #594334;
@@ -504,6 +562,12 @@ hr {
 	text-align: center;
 	text-transform: none;
 }
+.navigation > li > a > img {
+	float: left;
+	width: 50%;
+	height: 50%;
+}
+
 /** Connect **/
 #connect {
 	float: right;

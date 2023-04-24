@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
+import { TitleService } from '../services/title.service';
 import { User } from '../models/user';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { filter } from 'rxjs/operators'
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -10,15 +14,29 @@ import { Router } from '@angular/router';
 })
 
 export class NavbarComponent implements OnInit {
+
   userName: string
+  title: string
+  titleSub: Subscription
 
   constructor(
     private authService: AuthenticationService,
     private router: Router,
-  ) { }
+    private titleService: TitleService,
+    private route: ActivatedRoute,
+  ) {
 
-  ngOnInit() {
-    this.userName = this.authService.getCurrentUser()['name']
+  }
+
+  async ngOnInit() {
+    this.titleSub = this.titleService.currentTitle$.subscribe(
+      title => {
+        this.title = title;
+        console.log(this.title);
+      }
+    )
+
+    this.userName = await this.authService.getCurrentUser()['name'];
   }
 
   public isLoggedIn(): boolean {

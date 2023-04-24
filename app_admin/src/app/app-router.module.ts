@@ -8,12 +8,36 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: 'add-trip', component: AddTripComponent },
-  { path: 'edit-trip', component: EditTripComponent},
-  { path: 'delete-trip', component: DeleteTripComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'list-trips', component: TripListingComponent },
-  { path: '', component: HomeComponent, pathMatch: 'full' }
+  {
+    path: 'add-trip',
+    data: { title: 'Add Trip' },
+    component: AddTripComponent,
+  },
+  {
+    path: 'edit-trip',
+    data: { title: 'Edit Trip'},
+    component: EditTripComponent
+  },
+  {
+    path: 'delete-trip',
+    data: { title: 'Delete Trip'},
+    component: DeleteTripComponent
+  },
+  {
+    path: 'login',
+    data: { title: 'Login'},
+    component: LoginComponent
+  },
+  {
+    path: 'travel',
+    data: { title: 'Travel'},
+    component: TripListingComponent
+  },
+  {
+    path: 'admin',
+    data: { title: 'Admin'},
+    component: HomeComponent
+  }
 ]
 
 @NgModule({

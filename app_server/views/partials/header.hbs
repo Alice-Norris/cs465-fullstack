@@ -1,29 +1,40 @@
 <div id="header">
-	<div id="logo">
-		<a href="/index"><img src="images/logo.png" alt="LOGO" height="100" width="200"></a>
-	</div>
 	<div id="navigation">
 		<ul>
 			<li>
-				<a href="/">Home</a>
+					<a href="/"><img id="logo" src="images/logo.png" alt="LOGO" height="100" width="200"></a>
 			</li>
 			<li>
 				<a href="/travel">Travel</a>
 			</li>
 			<li>
-				<a href="/rooms">Rooms</a>
-			</li>
-			<li>
-				<a href="/meals">Meals</a>
-			</li>
-			<li>
 				<a href="/news">News</a>
 			</li>
 			<li>
-				<a href="/about">About</a>
+				<a href="/reservations">Reservations</a>
 			</li>
 			<li>
-				<a href="/contact">Contact</a>
+				<a href="/admin">Admin</a>
+			</li>
+			<li>
+				<a href="/checkout">
+					<div class="d-flex align-items-center justify-content-center">
+						<svg class="bi" width="1em" height="1em" fill="#ffffff">
+							<use href="images/bootstrap-icons.svg#cart4"/>
+						</svg>
+						Checkout
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#login-modal" data-toggle="modal" data-target="#login-modal">
+					<div class="d-flex align-items-center justify-content-center">
+						<svg class="bi" width="1em" height="1em" fill="#ffffff">
+							<use href="images/bootstrap-icons.svg#person"/>
+						</svg>
+						Login
+					</div>
+				</a>
 			</li>
 		</ul>
 	</div>

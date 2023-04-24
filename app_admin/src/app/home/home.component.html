@@ -1,4 +1,42 @@
-<div class="container" *ngIf="!isLoggedIn()">
-  <br/>
+<div class="" *ngIf="!isLoggedIn()">
   <h2>Please login to continue</h2>
+</div>
+
+<div *ngIf="isLoggedIn()" id="form-div" class="d-flex flex-grow-1">
+  <form class="d-flex flex-column justify-content-between">
+    <fieldset class="d-flex align-items-center">
+      <label for="id-input" class="px-3">ID:</label>
+      <input type="text" name="id-input">
+    </fieldset>
+
+    <fieldset class="d-flex align-items-center">
+      <label for="dest-input" class="px-3">Destination:</label>
+      <input type="text" name="dest-input">
+    </fieldset>
+
+    <fieldset class="d-flex align-items-center">
+      <label for="length-inputs" class="px-3">Length of Stay: </label>
+
+      <input type="number" min="1" max="30" name="nights-input" size="2">
+      <label for="nights-input" class="px-2">Nights</label>
+
+      <input type="number" men="1" max="30" name="days-input" size="2">
+      <label for="days-input" class="px-2">Days</label>
+    </fieldset>
+
+    <fieldset class="d-flex align-items-center">
+      <label for="start-input" class="px-3">Start Date:</label>
+      <input type="date" name="start-input">
+    </fieldset>
+
+    <fieldset class="d-flex align-items-center">
+      <label for="resort-input">Resort:</label>
+      <input type="text" name="resort-input">
+    </fieldset>
+
+    <fieldset class="d-flex align-items-center">
+      <label for="per-person-input">Per Person:</label>
+      <input type="" name="per-person-input">
+    </fieldset>
+  </form>
 </div>

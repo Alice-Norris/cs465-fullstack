@@ -1,9 +1,5 @@
-<div class="col-md-12 d-flex flex-column">
-  <h2 class="text-center">Edit Trip</h2>
-</div>
-
-<div class="row d-flex">
-    <div class="col-md-6 row d-flex flex-column">
+<div class="d-flex flex-grow-1 align-items-center justify-content-center"  id="edit-trip">
+  <div class="d-flex flex-column">
     <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label>Code:</label>
@@ -76,15 +72,17 @@
           <div *ngIf="f.description.errors.required">Description is required</div>
         </div>
       </div>
-      <div class="col-md-12">
+      <div class="">
         <button type="submit" class="btn btn-info w-100">Save</button>
       </div>
     </form>
   </div>
-  <div *ngIf="imgName.length==0" class="col-md-6">
+
+  <div *ngIf="imgName.length==0" class="">
     <p>Image Loading...</p>
   </div>
-  <div *ngIf="!imgName.length==0" class="col-md-6">
-    <img  src='{{ imgPath}}{{ imgName }}'>
+
+  <div *ngIf="!imgName.length==0">
+    <img src='{{ imgPath}}{{ imgName }}' id="trip-photo">
   </div>
 </div>

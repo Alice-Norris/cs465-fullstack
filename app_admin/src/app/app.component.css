@@ -1,0 +1,23 @@
+app-sidebar {
+  height: 100%;
+}
+#sidebar {
+  background-color: #42998D;
+}
+#navbar {
+  background-color: #42998D;
+  width: 100%;
+}
+input {
+  color: white;
+  background-color:black;
+  font-size: 2em;
+  height: 1em;
+  width: 1em;
+}
+#sidebar-div {
+  height: 100%;
+}
+#contents {
+  height: 100%;
+}

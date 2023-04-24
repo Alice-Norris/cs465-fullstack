@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { TitleService } from '../services/title.service';
 import { TripDataService } from '../services/trip-data.service';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -23,20 +25,24 @@ export class EditTripComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private title: Title,
     private authService: AuthenticationService,
-    private tripService: TripDataService
+    private tripService: TripDataService,
+    private titleService: TitleService
     ) { }
 
   ngOnInit() {
+    this.title.setTitle('Edit Trip')
+    this.titleService.updateTitle(this.title.getTitle());
     // retrieving stored tripCode
     const tripCode = localStorage.getItem("tripCode");
-    console.log(this.imgName==='');
+    // console.log(this.imgName==='');
     if (!tripCode) {
       alert("Something went wrong, couldn't find the tripCode!");
       this.router.navigate(['']);
       return;
     }
-    console.log('EditTripComponent#onInit found tripCode ' + tripCode);
+    // console.log('EditTripComponent#onInit found tripCode ' + tripCode);
 
   this.editForm = this.formBuilder.group({
     _id: [],
@@ -50,11 +56,11 @@ export class EditTripComponent implements OnInit {
     description: ['', Validators.required]
   })
 
-  console.log('EditTripComponent#onInit calling TripDataService#getTrip(\'' + tripCode + '\')');
+  // console.log('EditTripComponent#onInit calling TripDataService#getTrip(\'' + tripCode + '\')');
 
   const trip = this.tripService.getTrip(tripCode)
     .then(data => {
-      console.log(data);
+      // console.log(data);
       this.editForm.patchValue(data[0]);
       this.imgName=data[0]["image"];
     })
@@ -66,7 +72,7 @@ export class EditTripComponent implements OnInit {
     if (this.editForm.valid) {
       this.tripService.updateTrip(this.editForm.value)
       .then(data => {
-        console.log(data);
+        // console.log(data);
         this.router.navigate(['']);
       });
     }

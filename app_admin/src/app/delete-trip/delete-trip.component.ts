@@ -36,7 +36,7 @@ export class DeleteTripComponent implements OnInit {
       this.router.navigate(['']);
       return;
     }
-    console.log('DeleteTripComponent#onInit found tripCode ' + tripCode);
+    //console.log('DeleteTripComponent#onInit found tripCode ' + tripCode);
 
     // represents the form in the HTML page for this component. Text inputs
     // disabled, no validation needed
@@ -52,12 +52,12 @@ export class DeleteTripComponent implements OnInit {
       description: [{ value: '', disabled: true}],
     })
 
-    console.log('DeleteTripComponent#onInit calling TripDataService#getTrip(\'' + tripCode + '\')');
+    //console.log('DeleteTripComponent#onInit calling TripDataService#getTrip(\'' + tripCode + '\')');
 
     // get trip via trip service to autofill form/image
     const trip = this.tripService.getTrip(tripCode)
       .then(data => {
-        console.log(data);
+        //console.log(data);
         this.deleteForm.patchValue(data[0]);
         this.imgName = data[0]["image"];
       })
@@ -68,7 +68,7 @@ export class DeleteTripComponent implements OnInit {
     // form validation not required (all fields disabled)
     this.tripService.deleteTrip(this.deleteForm.value)
     .then(data => {
-      console.log(data);
+      //console.log(data);
       this.router.navigate([''])
     });
   }

@@ -12,11 +12,14 @@ const renderBlogsList = (req, res, responseBody) => {
     responseBody = [];
   } else {
     if(!responseBody.length) {
-      message = 'No meals exist in database!';
+      message = 'No blogs exist in database!';
     }
   }
   console.log(JSON.stringify(responseBody));
   res.render('index', {
+    title: 'Travlr Getaways',
+    modal: 'loginModal',
+    layout: '../views/layouts/layout',
     posts: responseBody,
     message
   });

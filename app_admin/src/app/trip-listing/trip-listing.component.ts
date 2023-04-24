@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { Title } from '@angular/platform-browser';
 import { TripDataService } from '../services/trip-data.service';
-import { Trip } from '../models/trip';
 import { AuthenticationService } from '../services/authentication.service';
+import { TitleService } from '../services/title.service';
+
+import { Trip } from '../models/trip';
+
 
 @Component({
   selector: 'app-trip-listing',
@@ -15,22 +19,31 @@ export class TripListingComponent implements OnInit {
 
   //trips: Array<any> = trips;
   trips: Trip[];
-
+  viewModes: Array<string> = ['list', 'card'];
+  mode: string = this.viewModes[0]
   message: string;
+  headerText: string = this.title.getTitle();
 
   constructor(
     private tripDataService: TripDataService,
+    private title: Title,
+    private titleService: TitleService,
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
-  
+
   private addTrip(): void {
-    console.log('Inside TripListingComponent#addTrip');
+    //console.log('Inside TripListingComponent#addTrip');
     this.router.navigate(['add-trip']);
   }
 
+  private changeViewMode(mode: string): void {
+    //console.log("Mode received: " + mode);
+  }
+
   private getTrips(): void {
-    console.log('Inside TripListingComponent#getTrips');
+    //console.log('Inside TripListingComponent#getTrips');
     this.message = 'Searching for trips';
     this.tripDataService
       .getTrips()
@@ -43,8 +56,13 @@ export class TripListingComponent implements OnInit {
   public isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }
-  
+
   ngOnInit(): void {
     this.getTrips();
+    this.route.data.subscribe((data) => {
+      //console.log(data.title);
+      this.title.setTitle('Travel');
+      this.titleService.updateTitle(this.title.getTitle());
+    })
   }
 }

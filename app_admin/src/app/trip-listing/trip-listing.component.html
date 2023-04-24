@@ -1,9 +1,29 @@
-<!-- <pre>{{ trips | json }}</pre> -->
-<div *ngIf="isLoggedIn()">
-  <button (click)="addTrip()" class="btn btn-info">Add Trip</button>
-</div>
-<div class="row">
-  <div *ngFor="let trip of trips">
-    <app-trip-card [trip]="trip" class="card-deck mt-2"></app-trip-card>
+<div id="trip-listing-div">
+  <div *ngIf="isLoggedIn()" id="trip-list-btns" class="">
+    <div *ngIf="mode === 'card'" >
+      <button (click)="addTrip()" class="btn btn-info">Add Trip</button>
+    </div>
+
+    <div class="" data-toggle="buttons">
+      <label class="" for="card-view-btn">
+        <input type="radio" (click)="changeViewMode('card')" class="" name="card-view-btn" id="card-view-btn" autocomplete="off" checked>
+        <i class="bi bi-grid-3x3-gap-fill"></i>
+      </label>
+
+      <label class="btn btn-outline-primary" for="list-view-btn">
+        <input type="radio" (click)="changeViewMode('list')" class="" name="list-view-btn" id="list-view-btn" autocomplete="off">
+        <i class="bi bi-list"></i>
+      </label>
+    </div>
+  </div>
+
+  <div class="row justify-content-start" id="card-view" *ngIf="mode === 'card'">
+    <div *ngFor="let trip of trips">
+      <app-trip-card [trip]="trip" class="card-deck mt-2"></app-trip-card>
+    </div>
+  </div>
+
+  <div id="list-view" *ngIf="mode === 'list'">
+    <app-trip-table [trips]="trips" class="d-flex flex-column"></app-trip-table>
   </div>
 </div>

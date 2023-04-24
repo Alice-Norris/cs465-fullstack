@@ -21,17 +21,19 @@ const routers = {
   '/rooms' : require('./app_server/routes/rooms') ,
   '/travel' : require('./app_server/routes/travel') ,
   '/users': require('./app_server/routes/users'),
-  '/api' : require('./app_api/routes/index')
+  '/api' : require('./app_api/routes/index'),
 }
 const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
+app.set('layouts', path.join(__dirname, 'app_server', 'views', 'layouts'))
 
 // register handlebars partials from the partials folder in views
 hbs.registerPartials(path.join(__dirname, 'app_server', 'views/partials'));
 
 app.set('view engine', 'hbs');
+
 
 // setting logger and express up
 app.use(logger('dev'));
@@ -43,10 +45,16 @@ app.use(passport.initialize());
 
 // allow CORS
 app.use('/api', (req, res, next) => {
+  console.log(next)
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   next();
+})
+
+// redirect /admin link to SPA, no need for route or controller.
+app.use('/admin', (req, res, next) => {
+  res.redirect('http://localhost:4200/admin');
 })
 
 // catch all unauthorized errors, return 401 status with error message

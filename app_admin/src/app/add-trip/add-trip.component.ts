@@ -28,7 +28,7 @@ export class AddTripComponent implements OnInit {
       return;
     }
 
-    console.log('AddTripComponen#onInit found tripCode ' + tripCode);
+    //console.log('AddTripComponen#onInit found tripCode ' + tripCode);
 
     this.addForm = this.formBuilder.group({
       id: [],
@@ -41,16 +41,16 @@ export class AddTripComponent implements OnInit {
       image: ['', Validators.required],
       description: ['', Validators.required]
     })
-  console.log('EditTripComponent#onInit calling TripDataService#addTrip(\'' + tripCode + '\')');
+  //console.log('EditTripComponent#onInit calling TripDataService#addTrip(\'' + tripCode + '\')');
   }
-  
+
   onSubmit() {
     this.submitted = true;
     if(this.addForm.valid){
       this.tripService
       .addTrip(this.addForm.value)
       .then ( data => {
-        console.log(data);
+        //console.log(data);
         this.router.navigate(['']);
       })
     }

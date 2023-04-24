@@ -1,4 +1,3 @@
-const fs = require('fs')
 const request = require('request')
 
 const apiOptions = {
@@ -20,6 +19,8 @@ const renderTravelList = (req, res, responseBody) => {
   console.log("Title: " + pageTitle + "\nResponse Body:" + JSON.stringify(responseBody));
   res.render('travel', {
     title: pageTitle,
+    modal: 'loginModal',
+    layout: '../views/layouts/layout',
     trips: responseBody,
     message
   });

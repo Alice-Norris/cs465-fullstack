@@ -1,25 +1,49 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
-  <a class="navbar-brand" href="#"><img src="/assets/images/logo.png"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-   aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" routerLink="list-trips">Trips
-        <span class="sr-only">(current)</span>
-      </a>
+<div class="d-flex flex-column">
+  <div>
+    <div *ngIf="this.title === 'Admin'" id="admin-icons">
+      <button type="button" class="btn btn-link" name="help">
+        <svg class="bi" width="32" height="32" fill="#ffffff">
+          <use href="/assets/images/bootstrap-icons.svg#question-circle"/>
+        </svg>
+      </button>
+
+      <button class="btn btn-link">
+        <svg class="bi" width="32" height="32" fill="#ffffff">
+          <use href="/assets/images/bootstrap-icons.svg#chat"/>
+        </svg>
+      </button>
+
+      <button class="btn btn-link">
+        <svg class="bi" width="32" height="32" fill="#ffffff">
+          <use href="/assets/images/bootstrap-icons.svg#envelope"/>
+        </svg>
+      </button>
+
+      <button class="btn btn-link">
+        <svg class="bi" width="32" height="32" fill="#ffffff">
+          <use href="/assets/images/bootstrap-icons.svg#person-circle"/>
+        </svg>
+      </button>
     </div>
-  </div>
-  <div class="navbar-end">
-    <a class="navbar-item" routerLink="login" *ngIf="!isLoggedIn()">
-      <span class="has-icon-left">Log In</span>
-    </a>
+
+    <div *ngIf="this.title !== 'Admin'">
+      <h2>{{ title }}</h2>
+    </div>
+
     <div *ngIf="isLoggedIn()">
-      <span>Hello, {{ userName }}</span><br/>
-      <a class="navbar-item link-primary" (click)="onLogout()" *ngIf="isLoggedIn()">
-        <span class="has-icon-left">Log Out</span>
+      <a id="logout" class="link link-primary" (click)="onLogout()" routerLink="">
+        Hello, {{ userName }}! <br />Log Out
+      </a>
+    </div>
+
+    <div *ngIf="!isLoggedIn()">
+      <a id="login" routerLink="login">
+        Log In
       </a>
     </div>
   </div>
-</nav>
+  <div>
+
+  </div>
+</div>
+

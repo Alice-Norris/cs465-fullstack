@@ -1,0 +1,52 @@
+
+<!-- Modal -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header login-modal-header">
+        <h5 id="login-modal-label" class="register collapse show">Login</h5>
+        <h5 id="register-modal-label" class="register collapse">Register</h5>
+        <button type="button" class="btn btn-link" data-dismiss="modal" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="d-flex flex-column justify-content-between" method="POST">
+          <div class="d-flex flex-row justify-content-center register collapse">
+            <label class="register collapse" for="name">Name:</label>
+            <input type="text" class="register collapse" placeholder="your name" name="name"/>
+          </div>
+          <div class="d-flex flex-row justify-content-center">
+            <label for="email">Email:</label>
+            <input type="email" placeholder="user@email.com" name="email"/>
+          </div>
+          <div class="d-flex flex-row justify-content-center">
+            <label for="password">Password:</label>
+            <input type="password" placeholder="password" name="password"/>
+          </div>
+          <div class="d-flex flex-row justify-content-center register collapse">
+            <label class="register collapse" for="verify-pass">Re-type Password:</label>
+            <input type="password" class="register collapse" placeholder="password" name="verify-pass"/>
+          </div>
+          <div class="d-flex flex-row align-items-baseline justify-content-center register collapse">
+            <label id="tos-check-label" class="register collapse" for="tos-check">
+              <input class="register collapse" type="checkbox" id="tos-check"/>
+              I agree to the <a href="" >Terms of Use</a> and <a href="">Privacy Policy</a>
+            </label>
+          </div>
+          <div class="d-flex flex-row justify-content-around modal-footer login-modal-footer register collapse show">
+            <a href=".register" class="btn btn-link register collapse show" data-toggle="collapse" role="button" aria-expanded="false">Don't have an account? Register!</a>
+            <button class="btn btn-secondary register collapse show" type="button" data-dismiss="modal">Close</button>
+            <button href="localhost/api/login/" class="btn btn-primary register collapse show" type="submit" formaction="api/login">Login</button>
+          </div>
+          <div class="d-flex flex-row justify-content-around modal-footer login-modal-footer register collapse">
+            <a href=".register" class="btn btn-link register collapse" data-toggle="collapse" role="button" aria-expanded="false">Already have an account? Login!</a>
+            <button class="btn btn-secondary register collapse" type="button"  data-dismiss="modal">Close</button>
+            <button class="btn btn-primary register collapse" type="submit" formaction="api/register" >Register</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

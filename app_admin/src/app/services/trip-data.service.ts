@@ -31,7 +31,7 @@ export class TripDataService {
   }
 
   public getTrip(tripCode: string): Promise<Trip> {
-    console.log('Insiide TripDataService#getTrip(tripcode)');
+    //console.log('Insiide TripDataService#getTrip(tripcode)');
     return this.http
       .get(this.tripUrl + tripCode)
       .toPromise()
@@ -40,12 +40,13 @@ export class TripDataService {
   }
 
   public getTrips(): Promise<Trip[]> {
-    console.log('Inside TripDataService#getTrips');
+    //console.log('Inside TripDataService#getTrips');
     return this.http
       .get(this.tripUrl)
       .toPromise()
       .then(response => response.json() as Trip[])
       .catch(this.handleError);
+
   }
 
   public updateTrip(formData: Trip): Promise<Trip> {

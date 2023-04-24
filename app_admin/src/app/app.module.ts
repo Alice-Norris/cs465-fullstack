@@ -7,12 +7,15 @@ import { AppRoutingModule } from './app-router.module';
 import { TripListingComponent } from './trip-listing/trip-listing.component';
 import { TripCardComponent } from './trip-card/trip-card.component';
 import { TripDataService } from './services/trip-data.service';
+import { TitleService } from './services/title.service';
 import { AddTripComponent } from './add-trip/add-trip.component';
 import { EditTripComponent } from './edit-trip/edit-trip.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { DeleteTripComponent } from './delete-trip/delete-trip.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { TripTableComponent } from './trip-table/trip-table.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { DeleteTripComponent } from './delete-trip/delete-trip.component';
     NavbarComponent,
     LoginComponent,
     HomeComponent,
-    DeleteTripComponent
+    DeleteTripComponent,
+    SidebarComponent,
+    TripTableComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,10 @@ import { DeleteTripComponent } from './delete-trip/delete-trip.component';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [TripDataService],
+  providers: [
+    TripDataService,
+    TitleService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
